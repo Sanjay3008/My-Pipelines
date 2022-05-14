@@ -31,11 +31,11 @@ run:
     : ${PIPELINE_NAME:?}
 
     CONCOURSE_USERNAME="${CONCOURSE_USERNAME:-$CONCOURSE_TEAM}"
-    CONCOURSE_URL="${CONCOURSE_URL:-http://localhost:8080/}"
+    CONCOURSE_URL="${CONCOURSE_URL:-http://localhost:8080}"
 
     > fly \
       curl -L --fail \
-      "${CONCOURSE_URL}/api/v1/cli?arch=amd64&platform=linux"
+      "${CONCOURSE_URL}/api/v1/cli?arch=amd64&platform=linux" 
     
     chmod +x fly
 
