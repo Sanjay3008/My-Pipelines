@@ -1,0 +1,33 @@
+resources:
+  - name: python-git
+    type: git
+    source:
+      uri: https://github.com/Sanjay3008/Python_Script.git
+      branch: main
+
+  - name: my-timer
+    type: time
+    source:
+      interval: 2m
+ 
+jobs:
+- name: test
+  plan:
+  - get: python-git
+  - get: my-timer
+    trigger: true
+  - config:
+      platform: linux
+      image_resource:
+        name: ""
+        source:
+          repository: python
+          tag: latest
+        type: docker-image
+      inputs:
+        - name: python-git
+      run:
+        path: /bin/sh
+        args: ["python-git/script.sh"]
+    task: run-tests
+  public: true
