@@ -31,7 +31,7 @@ run:
     : ${PIPELINE_NAME:?}
 
     CONCOURSE_USERNAME="${CONCOURSE_USERNAME:-$CONCOURSE_TEAM}"
-    CONCOURSE_URL="${CONCOURSE_URL:-http://localhost:8080}"
+    CONCOURSE_URL="${CONCOURSE_URL:-https://cd.gds-reliability.engineering}"
 
     > fly \
       curl -L --fail \
